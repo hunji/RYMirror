@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>hunji</name>
-    <description>学习若依框架</description>
+    <description>手写若依框架</description>
 
     <modules>
         <module>hunji-common</module>
