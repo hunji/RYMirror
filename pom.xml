@@ -6,23 +6,29 @@
 
     <groupId>com.hunji</groupId>
     <artifactId>hunji</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <name>hunji</name>
     <description>手写若依框架</description>
 
     <modules>
-        <module>hunji-common</module>
         <module>hunji-framework</module>
-        <module>hunji-quartz</module>
         <module>hunji-system</module>
         <module>hunji-admin</module>
+        <module>hunji-common</module>
     </modules>
 
     <properties>
+        <hunji.version>0.0.1</hunji.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <lombok.version>1.18.24</lombok.version>
+        <druid.version>1.2.11</druid.version>
+        <hutool.version>5.3.8</hutool.version>
+        <mybatis-spring-boot.version>2.2.2</mybatis-spring-boot.version>
+        <pagehelper.boot.version>1.4.3</pagehelper.boot.version>
+
     </properties>
 
     <!--    依赖声明-->
@@ -38,6 +44,12 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+
     </dependencies>
     <!--dependencyManagement元素提供了一种管理依赖版本号的方式。
         在dependencyManagement元素中声明所依赖的jar包的版本号等信息， 那么所有子项目再次引入此依赖jar包时则无需显式的列出版本号。
@@ -54,6 +66,47 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- 核心模块-->
+            <dependency>
+                <groupId>com.hunji</groupId>
+                <artifactId>hunji-framework</artifactId>
+                <version>${hunji.version}</version>
+            </dependency>
+
+            <!-- 系统模块-->
+            <dependency>
+                <groupId>com.hunji</groupId>
+                <artifactId>hunji-system</artifactId>
+                <version>${hunji.version}</version>
+            </dependency>
+
+            <!-- 通用工具-->
+            <dependency>
+                <groupId>com.hunji</groupId>
+                <artifactId>hunji-common</artifactId>
+                <version>${hunji.version}</version>
+            </dependency>
+
+            <!-- 阿里数据库连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- SpringBoot集成mybatis框架 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot.version}</version>
+            </dependency>
+
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

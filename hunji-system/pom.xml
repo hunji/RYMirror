@@ -5,16 +5,23 @@
     <parent>
         <artifactId>hunji</artifactId>
         <groupId>com.hunji</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>hunji-system</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <description>
+        system系统模块
+    </description>
+
+    <dependencies>
+        <!-- 通用工具-->
+        <dependency>
+            <groupId>com.hunji</groupId>
+            <artifactId>hunji-common</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>
