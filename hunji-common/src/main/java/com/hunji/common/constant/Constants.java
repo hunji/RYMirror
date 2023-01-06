@@ -1,7 +1,6 @@
 package com.hunji.common.constant;
 
 /**
- * TODO
  *
  * @author hunji
  * @version 1.0
