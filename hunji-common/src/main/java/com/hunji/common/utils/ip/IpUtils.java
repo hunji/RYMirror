@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version 1.0
  * @date 2023/1/8 17:10
  */
+@SuppressWarnings("ALL")
 public class IpUtils {
     /**
      * 获取客户端IP
@@ -102,6 +103,8 @@ public class IpUtils {
                 {
                     case SECTION_6:
                         return true;
+                    default:
+                        return false;
                 }
             default:
                 return false;

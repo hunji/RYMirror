@@ -13,6 +13,14 @@ import java.util.List;
  */
 @Mapper
 public interface SysUserMapper {
+    /**
+     * 测试方法，获取master数据源数据
+     * @return
+     */
     List<SysUser> getAllUsersMaster();
+    /**
+     * 测试方法，获取slave数据源数据
+     * @return
+     */
     List<SysUser> getAllUsersSlave();
 }

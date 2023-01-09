@@ -1,5 +1,9 @@
 package com.hunji.common.enums;
 
+/**
+ * @author hunji
+ */
+
 public enum DataSourceType {
     /**
      * 主库
