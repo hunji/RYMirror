@@ -1,6 +1,6 @@
 package com.hunji.system.service.impl;
 
-import com.hunji.common.DataSourceType;
+import com.hunji.common.enums.DataSourceType;
 import com.hunji.common.annotation.DataSource;
 import com.hunji.system.domain.SysUser;
 import com.hunji.system.mapper.SysUserMapper;

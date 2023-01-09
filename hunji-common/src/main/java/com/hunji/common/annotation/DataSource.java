@@ -1,7 +1,6 @@
 package com.hunji.common.annotation;
 
-import com.hunji.common.DataSourceType;
-import com.hunji.common.constant.DataConstants;
+import com.hunji.common.enums.DataSourceType;
 
 import java.lang.annotation.*;
 

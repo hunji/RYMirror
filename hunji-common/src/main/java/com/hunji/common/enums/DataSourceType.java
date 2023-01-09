@@ -1,4 +1,4 @@
-package com.hunji.common;
+package com.hunji.common.enums;
 
 public enum DataSourceType {
     /**

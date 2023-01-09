@@ -5,8 +5,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties;
 import com.alibaba.druid.util.Utils;
-import com.hunji.common.DataSourceType;
-import com.hunji.common.utils.spring.SpringUtils;
+import com.hunji.common.enums.DataSourceType;
 import com.hunji.framework.config.properties.DruidProperties;
 import com.hunji.framework.datasource.DynamicDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -63,7 +62,8 @@ public class DruidConfig {
     public void setDataSource(Map<Object, Object> targetDataSources, String sourceName, String beanName) {
         try
         {
-            DataSource dataSource = SpringUtils.getBean(beanName);
+            DataSource dataSource = SpringUtil.getBean(beanName);
+
             targetDataSources.put(sourceName, dataSource);
         }
         catch (Exception e)
