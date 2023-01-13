@@ -33,9 +33,10 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.setConnectionFactory(connectionFactory);
 
         /**
-         * 这里的序列化参考了jeecgboot的实现方式
+         * jeecgboot的实现方式是：
+         * Jackson2JsonRedisSerializer<Object> serializer = jacksonSerializer();
          */
-        Jackson2JsonRedisSerializer<Object> serializer = jacksonSerializer();
+        FastJson2JsonRedisSerializer serializer = new FastJson2JsonRedisSerializer(Object.class);
 
         // 使用StringRedisSerializer来序列化和反序列化redis的key值
         template.setKeySerializer(new StringRedisSerializer());

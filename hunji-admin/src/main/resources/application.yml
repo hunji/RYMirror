@@ -33,3 +33,6 @@ logging:
   level:
     com:
       hunji: debug
+token:
+  # 令牌自定义标识
+  header: Authorization
