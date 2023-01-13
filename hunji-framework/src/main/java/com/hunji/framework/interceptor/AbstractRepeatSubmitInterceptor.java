@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  * @date 2023/1/13 11:25
  */
 @Component
-public abstract class RepeatSubmitInterceptor implements HandlerInterceptor {
+public abstract class AbstractRepeatSubmitInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         /**

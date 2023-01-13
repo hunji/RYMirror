@@ -7,13 +7,10 @@ import com.hunji.common.constant.CacheConstants;
 import com.hunji.common.core.redis.RedisCache;
 import com.hunji.common.filter.RepeatedlyRequestWrapper;
 import com.hunji.common.utils.http.HttpHelper;
-import com.hunji.framework.interceptor.RepeatSubmitInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hunji.framework.interceptor.AbstractRepeatSubmitInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -26,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2023/1/13 11:57
  */
 @Component
-public class SameUrlDataInterceptor extends RepeatSubmitInterceptor {
+public class SameUrlDataInterceptor extends AbstractRepeatSubmitInterceptor {
 
     public final String REPEAT_PARAMS = "repeatParams";
 
@@ -63,7 +60,7 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor {
         /*
         获取参数后进行拼接redis的key
          */
-        Map<String, Object> nowDataMap = new HashMap<String, Object>();
+        Map<String, Object> nowDataMap = new HashMap<>(2);
         nowDataMap.put(REPEAT_PARAMS, nowParams);
         nowDataMap.put(REPEAT_TIME, System.currentTimeMillis());
         // 请求地址
@@ -86,7 +83,7 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor {
                 }
             }
         }
-        Map<String, Object> cacheMap = new HashMap<String, Object>();
+        Map<String, Object> cacheMap = new HashMap<>(1);
         cacheMap.put(url, nowDataMap);
         redisCache.setCacheObject(cacheRepeatKey, cacheMap, annotation.interval(), TimeUnit.MILLISECONDS);
         return false;
