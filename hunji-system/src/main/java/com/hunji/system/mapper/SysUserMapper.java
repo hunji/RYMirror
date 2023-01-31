@@ -24,7 +24,17 @@ public interface SysUserMapper {
      */
     List<SysUser> getAllUsersSlave();
 
+    /**
+     * 查找用户
+     * @param userName
+     * @return
+     */
     SysUser selectUserByUserName(String userName);
 
+    /**
+     * 获取用户列表
+     * @param user
+     * @return
+     */
     List<SysUser> selectUserList(SysUser user);
 }
