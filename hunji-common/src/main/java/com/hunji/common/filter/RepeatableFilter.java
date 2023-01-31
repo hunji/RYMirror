@@ -1,5 +1,6 @@
 package com.hunji.common.filter;
 
+import cn.hutool.core.util.StrUtil;
 import org.springframework.http.MediaType;
 
 import javax.servlet.*;
@@ -21,7 +22,8 @@ public class RepeatableFilter implements Filter {
          * 参数如果是json类型，需要HttpServletRequest包装器进行加强，多次读取参数
          */
         if(request instanceof HttpServletRequest
-                && request.getContentType().startsWith(MediaType.APPLICATION_JSON_VALUE)){
+                && StrUtil.startWithIgnoreCase(request.getContentType(),MediaType.APPLICATION_JSON_VALUE))
+        {
             requestWrapper = new RepeatedlyRequestWrapper((HttpServletRequest) request,response);
         }
 

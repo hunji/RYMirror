@@ -23,4 +23,8 @@ public interface SysUserMapper {
      * @return
      */
     List<SysUser> getAllUsersSlave();
+
+    SysUser selectUserByUserName(String userName);
+
+    List<SysUser> selectUserList(SysUser user);
 }

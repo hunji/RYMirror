@@ -19,4 +19,17 @@ public interface ISysUserService {
      * @return
      */
     List<SysUser> getAllUsersSlave();
+
+    /**
+     * 获取用户
+     * @param userName
+     * @return
+     */
+    SysUser selectUserByUserName(String userName);
+    /**
+     * 获取用户
+     * @param userName
+     * @return
+     */
+    List<SysUser> selectUserList(SysUser user);
 }

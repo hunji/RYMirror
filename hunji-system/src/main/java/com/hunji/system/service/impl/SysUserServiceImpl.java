@@ -1,5 +1,6 @@
 package com.hunji.system.service.impl;
 
+import com.hunji.common.annotation.DataScope;
 import com.hunji.common.enums.DataSourceType;
 import com.hunji.common.annotation.DataSource;
 import com.hunji.system.domain.SysUser;
@@ -18,8 +19,11 @@ import java.util.List;
  */
 @Service
 public class SysUserServiceImpl implements ISysUserService {
+    private final SysUserMapper mapper;
     @Autowired
-    private SysUserMapper mapper;
+    public SysUserServiceImpl(SysUserMapper mapper) {
+        this.mapper = mapper;
+    }
 
     @Override
     @DataSource(DataSourceType.MASTER)
@@ -31,5 +35,17 @@ public class SysUserServiceImpl implements ISysUserService {
     @DataSource(DataSourceType.SLAVE)
     public List<SysUser> getAllUsersSlave() {
         return mapper.getAllUsersSlave();
+    }
+
+    @Override
+    public SysUser selectUserByUserName(String userName) {
+        return mapper.selectUserByUserName(userName);
+    }
+
+    @Override
+    @DataScope(deptAlias = "d", userAlias = "u")
+    public List<SysUser> selectUserList(SysUser user)
+    {
+        return mapper.selectUserList(user);
     }
 }
