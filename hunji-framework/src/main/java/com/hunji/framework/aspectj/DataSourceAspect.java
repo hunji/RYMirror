@@ -48,7 +48,7 @@ public class DataSourceAspect {
         }
     }
 
-    private DataSource getDataSource(ProceedingJoinPoint point) {
+    public DataSource getDataSource(ProceedingJoinPoint point) {
         MethodSignature signature = (MethodSignature) point.getSignature();
         // 查找方法上的注解
         DataSource dataSource = AnnotationUtils.findAnnotation(signature.getMethod(), DataSource.class);

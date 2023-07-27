@@ -1,17 +1,18 @@
 package com.hunji.framework.config;
 
-import cn.hutool.extra.spring.SpringUtil;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties;
 import com.alibaba.druid.util.Utils;
 import com.hunji.common.enums.DataSourceType;
+import com.hunji.common.utils.spring.SpringUtils;
 import com.hunji.framework.config.properties.DruidProperties;
 import com.hunji.framework.datasource.DynamicDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
@@ -62,12 +63,13 @@ public class DruidConfig {
     public void setDataSource(Map<Object, Object> targetDataSources, String sourceName, String beanName) {
         try
         {
-            DataSource dataSource = SpringUtil.getBean(beanName);
+            DataSource dataSource = SpringUtils.getBean(beanName);
 
             targetDataSources.put(sourceName, dataSource);
         }
         catch (Exception e)
         {
+            System.out.println(e.getMessage());
         }
     }
 

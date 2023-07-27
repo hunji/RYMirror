@@ -1,5 +1,6 @@
 package com.hunji.web.controller.system;
 
+import com.hunji.common.annotation.Anonymous;
 import com.hunji.common.core.domain.AjaxResult;
 import com.hunji.system.domain.SysUser;
 import com.hunji.system.service.ISysUserService;
@@ -21,6 +22,7 @@ import java.util.List;
 public class SysUserController {
     @Autowired
     private ISysUserService userService;
+    @Anonymous
     @GetMapping("/list")
     public AjaxResult list(SysUser user)
     {

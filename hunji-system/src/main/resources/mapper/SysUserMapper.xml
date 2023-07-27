@@ -46,10 +46,10 @@
     </resultMap>
 
     <select id="getAllUsersMaster" resultType="com.hunji.system.domain.SysUser">
-        select * from sys_user
+        select user_id from sys_user
     </select>
     <select id="getAllUsersSlave" resultType="com.hunji.system.domain.SysUser">
-        select * from sys_user
+        select user_id from sys_user
     </select>
     <select id="selectUserByUserName" parameterType="String" resultMap="SysUserResult">
         <include refid="selectUserVo"/>
