@@ -1,9 +1,9 @@
 package com.hunji.system.service.impl;
 
 import com.hunji.common.annotation.DataScope;
+import com.hunji.common.core.domain.entity.SysUser;
 import com.hunji.common.enums.DataSourceType;
 import com.hunji.common.annotation.DataSource;
-import com.hunji.system.domain.SysUser;
 import com.hunji.system.mapper.SysUserMapper;
 import com.hunji.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;

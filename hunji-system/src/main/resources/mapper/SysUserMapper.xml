@@ -45,10 +45,10 @@
         <result property="status"       column="role_status"    />
     </resultMap>
 
-    <select id="getAllUsersMaster" resultType="com.hunji.system.domain.SysUser">
+    <select id="getAllUsersMaster" resultType="com.hunji.common.core.domain.entity.SysUser">
         select user_id from sys_user
     </select>
-    <select id="getAllUsersSlave" resultType="com.hunji.system.domain.SysUser">
+    <select id="getAllUsersSlave" resultType="com.hunji.common.core.domain.entity.SysUser">
         select user_id from sys_user
     </select>
     <select id="selectUserByUserName" parameterType="String" resultMap="SysUserResult">

@@ -2,7 +2,7 @@ package com.hunji.web.controller.system;
 
 import com.hunji.common.annotation.Anonymous;
 import com.hunji.common.core.domain.AjaxResult;
-import com.hunji.system.domain.SysUser;
+import com.hunji.common.core.domain.entity.SysUser;
 import com.hunji.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

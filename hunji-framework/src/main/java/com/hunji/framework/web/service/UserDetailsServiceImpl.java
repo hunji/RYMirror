@@ -1,12 +1,19 @@
 package com.hunji.framework.web.service;
 
-import com.hunji.system.domain.SysUser;
+import com.hunji.common.core.domain.entity.SysUser;
+import com.hunji.common.core.domain.model.LoginUser;
+import com.hunji.common.enums.UserStatus;
+import com.hunji.common.exception.ServiceException;
 import com.hunji.system.service.ISysUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 /**
  * 实现spring security的UserDetailService的接口
@@ -18,16 +25,37 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
+    private static final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     @Autowired
     private ISysUserService userService;
-
+    @Autowired
+    private SysPasswordService passwordService;
+    @Autowired
+    private SysPermissionService permissionService;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = userService.selectUserByUserName(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("用户不存在");
+        if (null == user)
+        {
+            log.info("登录用户：{} 不存在.", username);
+            throw new ServiceException("登录用户：" + username + " 不存在");
         }
-        return user;
+        else if (UserStatus.DELETED.getCode().equals(user.getDelFlag()))
+        {
+            log.info("登录用户：{} 已被删除.", username);
+            throw new ServiceException("对不起，您的账号：" + username + " 已被删除");
+        }
+        else if (UserStatus.DISABLE.getCode().equals(user.getStatus()))
+        {
+            log.info("登录用户：{} 已被停用.", username);
+            throw new ServiceException("对不起，您的账号：" + username + " 已停用");
+        }
+        passwordService.validate(user);
+        return createLoginUser(user);
+    }
+
+    public UserDetails createLoginUser(SysUser user){
+        Set<String> permissions = permissionService.getMenuPermission(user);
+        return new LoginUser(user.getUserId(),user.getDeptId(),user,permissions);
     }
 }

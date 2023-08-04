@@ -16,3 +16,13 @@
 * 工具类
 * 权限页面
 * vue3版本
+
+
+git tag操作
+git tag -l 查看
+git show 标签名 查看提交信息
+git tag 标签名/git tag 标签名 提交版本 创建标签
+git tag -a 标签名 -m 附注信息
+git tag -d 标签名  删除标签
+git tag  origin 标签名称  推送标签
+git checkout 标签名称 切换到标签版本

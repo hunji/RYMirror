@@ -1,5 +1,6 @@
 package com.hunji.web.controller;
 
+import com.hunji.common.annotation.Anonymous;
 import com.hunji.common.annotation.RateLimiter;
 import com.hunji.common.annotation.RepeatSubmit;
 import com.hunji.common.enums.LimitType;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2023/1/9 10:04
  */
 @RestController
+@Anonymous
 public class HelloController {
     @GetMapping("/hello")
     /**
@@ -27,7 +29,7 @@ public class HelloController {
     }
 
     /**
-     * 测试： 在apipost中发送post请求：http://localhost:8080/hello
+     * 测试： 在apipost中发送post请求：http://localhost:8080/repeatTest
      *        在请求头中添加参数Authorization: Bearer:123213123
      */
     @PostMapping("/repeatTest")

@@ -1,6 +1,6 @@
 package com.hunji.system.mapper;
 
-import com.hunji.system.domain.SysUser;
+import com.hunji.common.core.domain.entity.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

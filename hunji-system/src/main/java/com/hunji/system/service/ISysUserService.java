@@ -1,6 +1,5 @@
 package com.hunji.system.service;
-
-import com.hunji.system.domain.SysUser;
+import com.hunji.common.core.domain.entity.SysUser;
 
 import java.util.List;
 
@@ -21,15 +20,16 @@ public interface ISysUserService {
     List<SysUser> getAllUsersSlave();
 
     /**
-     * 获取用户
+     *
      * @param userName
-     * @return
+     * @return 人员信息
      */
     SysUser selectUserByUserName(String userName);
     /**
-     * 获取用户
-     * @param userName
-     * @return
+     * 根据条件分页查询用户列表
+     *
+     * @param user 用户信息
+     * @return 用户信息集合信息
      */
     List<SysUser> selectUserList(SysUser user);
 }
